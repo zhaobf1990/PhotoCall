@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     List<Person> persons = new ArrayList<>();
     GridView gridView;
+    CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         initData();
         gridView = (GridView) findViewById(R.id.gridview);
-
+        checkBox = (CheckBox) findViewById(R.id.chb_manager);
         mAdapter = new MyAdapter(this);
 
 
@@ -54,11 +56,16 @@ public class MainActivity extends AppCompatActivity {
         gridView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override
             public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-                Person person = mAdapter.getItem(((AdapterView.AdapterContextMenuInfo) contextMenuInfo).position);
-                Toast.makeText(MainActivity.this, person.getNumber(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + person.getNumber()));
-                startActivity(intent);
+                if (checkBox.isChecked()) {
 
+                } else {
+
+                    Person person = mAdapter.getItem(((AdapterView.AdapterContextMenuInfo) contextMenuInfo).position);
+                    Toast.makeText(MainActivity.this, person.getNumber(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + person.getNumber()));
+                    startActivity(intent);
+
+                }
             }
         });
     }
