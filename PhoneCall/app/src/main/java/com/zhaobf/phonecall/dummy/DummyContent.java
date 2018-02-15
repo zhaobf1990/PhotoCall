@@ -26,7 +26,7 @@ public class DummyContent {
     private static final int COUNT = 25;
 
     static {
-        // Add some sample items.
+        // Update some sample items.
         for (int i = 1; i <= COUNT; i++) {
             addItem(createDummyItem(i));
         }
