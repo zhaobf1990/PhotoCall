@@ -301,7 +301,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public boolean onLongClick(View view) {
                     Person person = getItem(position);
-                    Intent intentz   = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + person.getTel()));
+                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + person.getTel()));
                     startActivity(intent);
                     return false;
                 }
